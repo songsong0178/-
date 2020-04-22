@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>超市收银系统</title>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="stylesheet" href="../css/demo.css">
+    <link rel="stylesheet" href="../css/index.css">
+<!--    <script src="../js/data_system.js"></script>-->
+</head>
+
+<body class="layui-layout-body">
+
+
+
+
+    <div class="layui-layout layui-layout-admin">
+        <!--首页的header-->
+        <div class="layui-header layui-bg-blue clear" id="header">
+            <div id="logo" class="layui-logo">
+                <img src="../images/logo.png" alt="">
+            </div>
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item">
+                    <a href="index.html"> <span>Welcome To Team2-Supermarket </span></a>
+                </li>
+                <li class="layui-nav-item">
+                </li>
+                <li class="layui-nav-item" id="xingming">
+                </li>
+                <li class="layui-nav-item">
+                </li>
+
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="../denglu.html">退出</a>
+                </li>
+            </ul>
+        </div>
+        <!--侧边栏导航-->
+        <div class="layui-side-scroll" id="nav">
+            <ul class="layui-nav layui-nav-tree layui-nav-side" lay-filter="test">
+                <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+                <li class="layui-nav-item"><a href="#"><span class="iconfont icon-huodong"></span></a></li>
+                <li class="layui-nav-item"><a href="iframe_index.html" target="sss"><span class="iconfont icon-huodong"></span>系统首页</a></li>
+                <li class="layui-nav-item"><a href="member.html" target="sss"><span class="iconfont icon-yuangong"></span>员工管理</a></li>
+                <li class="layui-nav-item"><a href="shangPinGuanLi.html" target="sss"><span class="iconfont icon-hezi"></span>商品管理</a></li>
+                <li class="layui-nav-item"><a href="dataReport.html" target="sss"><span class="iconfont icon-shujutongji"></span>销售管理</a></li>
+                <li class="layui-nav-item"><a href="cuxiaohuodong.html" target="sss"><span class="iconfont icon-yuangong"></span>促销活动</a></li>
+                <li class="layui-nav-item"><a href="shanghuo.html" target="sss"><span class="iconfont icon-huowuqingdan"></span>商品上货</a></li>
+                <li class="layui-nav-item"><a href="shouyin.html" target="sss"><span class="iconfont icon-shouyintai"></span>收银买单</a></li>
+            </ul>
+        </div>
+        <!-- 内容主体区域 -->
+        <div class="layui-body">
+             <iframe  src="iframe_index.html" style="width: 100%;height: 100%" class="switchSrc" name="sss"> <!--scrolling="no"--> </iframe>
+
+        </div>
+    </div>
+
+
+
+
+    <script src="../layui/layui.js"></script>
+    <script src="../jquery/jquery-1.11.3.js"></script>
+    <script src="../js/use_data.js"></script>
+    <script src="../js/index.js"></script>
+    <script src="../js/demo.js"></script>
+    <script>
+        //JavaScript代码区域
+        layui.use('element', function () {
+            var element = layui.element;
+        });
+        let newInputAcc=window.location.href.split('?')[1];//卡号
+        let arr= searchKey(['rifd',newInputAcc], 'members');//searchKey返回的是数组
+        // console.log( arr[0].img)
+        let imgSrc=arr[0].img.split('../')[1]
+        // console.log( imgSrc)
+        window.onload = function () {
+            $("#xingming").append(`
+              <a href="">姓名:${ arr[0].name}</a>
+            `);
+            $("#xingming").next().append(`
+             <a href="">工号:${ arr[0].id}</a>
+            `);
+            $("#xingming").prev().append(`
+             <a href=""><img src=../${imgSrc} alt="" id="touxiang"></a>
+            `);
+
+
+        }
+
+
+
+
+    </script>
+</body>
+</html>

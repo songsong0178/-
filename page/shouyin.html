@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>收银</title>
+    <link rel="stylesheet" href="../css/shouyin.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" chrome="1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <script src="../jquery/jquery-1.11.3.js"></script>
+    <!--<script src="../js/data_system.js"></script>-->
+    <script src="../js/use_data.js"></script>
+    <link rel="stylesheet" href="../font/iconfont.css">
+</head>
+<body style="padding: 0px 20px">
+<!--**************开头*****************-->
+<div class="row " id="head_cbrow">
+    <div class="col-lg-10">
+        <span class="iconfont icon-shouyintai1"></span>
+        <span id="cbshouyin">收银</span>
+    </div>
+</div>
+<!--    **********内容**************-->
+<div class="row cbcontent">
+<!--    *********************1 选择**************-->
+    <div class="row cbcontent1">
+        <div class="col-lg-10 clear" >
+            <input typeof="text" id="cbshuru" disabled="disabled" name="shuru" placeholder="请输入商品条码或扫码">
+            <div id="cbchaxun" onclick="cb_jiashuju(this)">添加</div>
+            <div id="cbxuanzhe">
+                <label for="cbshoudong">
+                    <input id="cbshoudong" name="fangshi" type="checkbox">
+                    <span class="radio-style">手动输入条形码</span>
+                </label>
+            </div>
+
+        </div>
+    </div>
+
+<!--    ***************2日期*******************-->
+    <div class="row cbcontent2 clear">
+        <div class="col-lg-10">
+            <div id="cbshouyinyuan">
+                <span>收银员:</span>
+                <span class="cbnum"></span>
+            </div>
+            <div id="cbriqi">
+                <span>日期</span>
+                <span id="cbshijian1"></span>
+            </div>
+        </div>
+</div>
+<!--    **************3表格**************-->
+    <div class="row cbcontent3">
+        <div class="col-lg-10 clear">
+                <table id="cbbiaoge" >
+                    <thead>
+                    <tr>
+                        <th>条码</th>
+                        <th>商品名称</th>
+                        <th>单价</th>
+                        <th>数量</th>
+                        <th>金额</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+
+<!--                    <tr>-->
+<!--                        <td>1</td>-->
+<!--                        <td>泡泡糖</td>-->
+<!--                        <td>2.0</td>-->
+<!--                        <td>10</td>-->
+<!--                        <td>20.0</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>1</td>-->
+<!--                        <td>泡泡糖</td>-->
+<!--                        <td>2.0</td>-->
+<!--                        <td>10</td>-->
+<!--                        <td>20.0</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>1</td>-->
+<!--                        <td>泡泡糖</td>-->
+<!--                        <td>2.0</td>-->
+<!--                        <td>10</td>-->
+<!--                        <td>20.0</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>1</td>-->
+<!--                        <td>泡泡糖</td>-->
+<!--                        <td>2.0</td>-->
+<!--                        <td>10</td>-->
+<!--                        <td>20.0</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>1</td>-->
+<!--                        <td>泡泡糖</td>-->
+<!--                        <td>2.0</td>-->
+<!--                        <td>10</td>-->
+<!--                        <td>20.0</td>-->
+<!--                    </tr>-->
+
+                    </tbody>
+                </table>
+            <div class="pages">
+
+            </div>
+            <div id="cbjiezhang" onclick="jiezhang(this)">结账</div>
+        </div>
+    </div>
+<!--******************4总计***********-->
+    <div class="row cbcontent4">
+        <div class="col-lg-10 ">
+            <div id="zongji">
+                <span>
+                总计
+                </span>
+                <span id="cbzongjijine">
+
+                </span>
+            </div>
+        </div>
+
+
+</div>
+</div>
+<!--******************结算界面***************-->
+<div id="cbjiesuan" class="clear">
+    <div id="cbcha">×</div>
+    <div id="cbjiezhangxinxi">结账信息</div>
+    <div id="cbzuo">
+        <span>收银员:</span>
+        <span class="cbnum"></span>
+        <span>日期</span>
+        <span id="cbshijian2"></span>
+        <span>流水号</span>
+        <span>20190310000001</span>
+        <table>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>商品名称</th>
+                <th>单价</th>
+                <th>数量</th>
+                <th>金额</th>
+            </tr>
+            </thead>
+            <tbody>
+
+
+            </tbody>
+        </table>
+        <div class="pages">
+
+        </div>
+        <div id="cbjiezhangzongji">
+            <span>总计</span>
+            <span id="cbzj"></span>
+        </div>
+        <div id="cbyouhui">
+            <span>*部分商品享受3.8节特惠活动</span>
+            <span>优惠</span>
+            <input type="text" placeholder="金额"  id="cbyouhuijine" style="width: 50px;height: 20px" onblur="jisuan()">
+
+        </div>
+    </div>
+    <div id="cbyou">
+        <div >
+            <span class="cbjs">实收</span>
+            <input type="text" placeholder="金额" id="jine" class="shijian" style="width: 50px" onblur="jisuan()">
+        </div>
+        <div>
+            <span class="cbjs">找零</span>
+            <span id="zhaoqian"></span>
+        </div>
+        <div id="cbquedingshouyin" onmouseover="gaibian(this)" onmouseout="huifu(this)"  onclick="dayin(this)">
+            确定收银
+        </div>
+        <div id="cbjieshu" >
+            <div  onmouseover="gaibian(this)" onmouseout="huifu(this)" onclick="xiaoshi(this)">打印票据</div>
+        </div>
+    </div>
+</div>
+<!--*********************弹出界面**************-->
+<script src="../js/shouyin.js"></script>
+</body>
+</html>

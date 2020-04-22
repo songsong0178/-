@@ -1,0 +1,30 @@
+{
+  "id": "1597022",
+  "name": "1.2",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3097497",
+      "name": "左右",
+      "font_class": "left",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "5532233",
+      "name": "左右",
+      "font_class": "left1",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "7928241",
+      "name": "icon-应用",
+      "font_class": "yingyong",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    }
+  ]
+}

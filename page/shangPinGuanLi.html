@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <!--    <link rel="stylesheet" href="../js//demo.css">-->
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <link rel="stylesheet" href="../font/font_jb/iconfont.css">
+    <script src="../jquery/jquery-3.4.1.js"></script>
+    <script src="../bootstrap/js/bootstrap.js"></script>
+    <!--    <script src="../js/data_system.js"></script>-->
+    <script src="../js/use_data.js"></script>
+    <script src="../layui/layui.js"></script>
+
+
+    <style>
+        *{
+            font-family:微软雅黑 ;
+            margin: 0;
+            padding: 0;
+            /*outline: #409EFF solid 1px;*/
+        }
+        body{
+            font-size: 14px;
+        }
+        html{
+            font-size: 100px;
+        }
+        nav{
+            width: 100%;
+            height: 0.8rem;
+            background-color: #409EFF;
+
+        }
+        .row{
+            margin-right:  0;
+        }
+        label{
+            white-space:nowrap!important;
+        }
+
+        #shangpin{
+            color: #666666;
+            padding: 20px 0 10px 0;
+            border-bottom: 1px solid #808080;
+            margin-bottom: 20px;
+        }
+        #shangpin>span{
+            margin-right: 5px;
+        }
+        #yincang{
+            height: 40px;
+            position: absolute;
+            right: 0px;
+            color: black;
+            width: 0px;
+            padding: 0;
+            opacity: 0;
+            transition: all 0.3s linear;
+            overflow: hidden;
+        }
+        #ulwai{
+            position: relative;
+        }
+        #sousuo{
+            display: inline-block;
+            height: 40px;
+            /*border-radius: 5px;*/
+            padding: 0 5px;
+            border: 1px solid grey;
+            position: absolute;
+            right: 20px;
+            color: grey;
+        }
+        .kuang{
+            height: 40px;
+
+        }
+        .clear:after{
+            clear: both;
+            content: "";
+            display: block;
+        }
+        input{
+            outline: none;
+            /*width: 150px;*/
+        }
+        .tianjia{
+            background-color:#F2F2F2;
+            font-size: 0.14rem;
+            /*height: 400px;*/
+        }
+        .xian-l{
+            height: 4px;
+            background-color: #E4E7ED;
+            position: relative;
+            padding: 0px 10px ;
+        }
+        .xian-d{
+            height: 4px;
+            background-color: #409EFF;
+            width: 90px;
+            border-radius: 2px;
+            position: absolute;
+            transition: all 0.3s linear;
+        }
+        .tian{
+            display: inline-block;
+            width: 130px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .heng{
+            position: relative;
+        }
+        .daoru-you{
+            position: absolute;
+            right: 0;
+            color: #0000FF;
+            display: inline-block;
+            width: 130px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .daoru-zuo{
+            color: #0000FF;
+            display: inline-block;
+            width: 130px;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .layui-btn layui-btn-normal{
+            background-color:#DEEDF7;
+            border: #409EFF 1px solid;
+            height: 40px;
+            text-align: center;
+            width: 80px;
+            line-height: 40px;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .one{
+            padding: 80px 20px;
+            transition: all 0.3s linear;
+        }
+        #two{
+            display: none;
+        }
+
+        .one-heng{
+            /*padding: 10px 20px;*/
+        }
+        .kuang1{
+            height: 40px;
+            width: 240px;
+            margin: 20px 20px;
+        }
+        .kuang2{
+            height: 40px;
+            width: 200px;
+            /*margin: 20px 20px;*/
+        }
+        #btn-tj{
+            margin-left: 110px;
+        }
+        .layui-tab-item{
+            transition: all 0.4s linear;
+        }
+        table{
+         color: #909399;
+        }
+        .biao{
+            margin: 0px 20px;
+        }
+
+        .row1{
+            margin-left: 0;
+            padding: 25px 0;
+            text-align: center;
+        }
+        .kao-right{
+            margin-right: 0;
+            width: 300px;
+        }
+        #ul-biao, #ul-biao1{
+            display: inline-block;
+        }
+        #ul-biao>span,#ul-biao1>span {
+           display: inline-block;
+            margin: 0 5px;
+            width: 26px;
+            height: 26px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 26px;
+        }
+        /*#gong{*/
+
+        /*}*/
+        .item-wo{
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+        }
+        .item-wo:hover{
+            background-color:  #409EFF;
+            color: white;
+        }
+        .zhong{
+            margin:  0 auto;
+            text-align: center;
+        }
+        .col-lg-4{
+            text-align: right;
+        }
+
+        #input-ye1, #input-ye{
+            width: 30px;
+        }
+        #li-nei-1{
+            background-color:#409EFF ;
+        }
+        .layui-btn{
+            background-color:#409EFF ;
+            color: white;
+        }
+        /*=============================模态框*/
+
+        .juzhong{
+            text-align: center;
+        }
+        /*.youduiqi{*/
+        /*    !*text-align: right;*!*/
+        /*}*/
+        .youduiqi input{
+            width: 300px;
+            margin: 0;
+        }
+        .layui-form-item{
+            margin: 0;
+        }
+        .modal-footer{
+            width: 100%;
+            margin: 0 auto;
+        }
+        .xghead{
+          padding: 20px 0;
+            border-bottom: grey 2px solid;
+        }
+        .xgbody{
+            padding: 20px;
+        }
+        .xgbuttom{
+            width: 300px;
+            margin: 0 auto;
+        }
+        #xgk{
+            position: absolute;
+            width: 400px;
+            padding: 20px;
+            border: red 1px solid;
+            display: none;
+            margin-left: 300px;
+            /*bottom: -350px;*/
+            top:-300px;
+            background-color: #F2F2F2;
+            transition: all 0.5s linear;
+        }
+        .container{
+            position: relative;
+            margin: 0 auto;
+        }
+        /*#gaiTiaoMa{*/
+        /*    background-color: #777777;*/
+        /*    cursor: ;*/
+        /*}*/
+        /*.co{*/
+        /*    !*width: 100%px;*!*/
+        /*    !*margin: 0 auto;*!*/
+        /*}*/
+
+
+
+
+    </style>
+</head>
+<body>
+<div>
+    <div id="shangpin"><span class="iconfont icon-shouyintai1" ></span>商品管理
+        </div>
+    <div class="layui-tab layui-tab-card" style="margin-bottom: 30px">
+            <ul class="layui-tab-title" id="ulwai">
+                <li class="li-nei" onclick="myTabs(0) "id="li-nei-1">添加商品种类</li>
+                <li class="li-nei" onclick="myTabs(1)" >查看商品类别</li>
+                <li class="li-nei" onclick="myTabs(2)">添加商品</li>
+                <li class="li-nei" onclick="myTabs(3)">查看商品</li>
+                <li id="yincang">
+                    <label for="xuan1"></label><select name="quiz" class="kuang duoxuan-1 " id="xuan1" onchange="func(this)" >
+                        <option value="一级类别" class="qxz">一级类别</option>
+                    </select>
+                    <label>
+                        <select name="quiz" class="kuang duoxuan-2" >
+                            <option value="二级类别" class="qxz">二级类别</option>
+                        </select>
+                    </label>
+                    <label for="mc"></label><input type="text" class="kuang" placeholder="请输入商品名称" id="mc">
+                    <label for="tiaoma"></label><input type="text" class="kuang" placeholder="请输入商品条码" id="tiaoma">
+                </li>
+                <li id="sousuo">搜索商品</li>
+            </ul>
+    </div>
+    <div class="layui-tab-content tianjia">
+        <div class="layui-tab-item">
+                <div class="heng">
+                    <span class="tian" onclick="tianjia(0)">添加一级类名</span>
+                    <span class="tian" onclick="tianjia(1)">添加二级类名</span>
+
+<!--                    <input type="file">-->
+                    <div class="xian-l">
+                        <div class="xian-d"></div>
+                    </div>
+                    <div id="xiao-kuang">
+                        <div class="one layui-anim layui-anim-up" id="one">
+                            <div class="one-heng">
+                                <span>商品类名</span><label for="input-tj1"></label><input class="kuang1" type="text" placeholder="请输入一级商品类名" id="input-tj1">
+                                <div class="layui-btn layui-btn-normal" data-toggle="modal" data-target="#myModal" id="tj-1">添加</div>
+                            </div>
+                        </div>
+                        <div class="one layui-anim layui-anim-up one-heng" id="two" >
+                            <div>
+                                <span>选择一级类名</span>
+                                <label for=""></label><select class="kuang1 duoxuan-1" name="" id="">
+                                    <option value="" class="qxz">请选择一级类名</option>
+
+                            </select>
+                            </div>
+                            <div>
+                                <span>二级商品类名</span>
+                                <label for="input-tj2"></label><input class="kuang1" id="input-tj2" type="text" placeholder="请输入二级商品类名">
+                            </div>
+                            <div class="layui-btn layui-btn-normal" data-toggle="modal" data-target="#myModal" id="btn-tj">添加</div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+            <!-- =======================================================添加商品种类子页面/-->
+        <div class="layui-tab-item layui-anim-up">
+            <div class="heng ">
+                <label for="xuan2"></label><select name="quiz" class="kuang1 duoxuan-1" id="xuan2" onchange="func(this)" >
+                        <option value="" class="qxz">请选择一级类别</option>
+
+                </select>
+                <label>
+                    <select name="quiz" class="kuang1 duoxuan-2">
+                            <option value="" class="qxz">请选择二级类别</option>
+
+                    </select>
+                </label>
+                <div class="biao" id="biao1">
+                        <table class="layui-table" lay-skin="line">
+                            <thead>
+                            <tr>
+                                <th>商品类别ID</th>
+                                <th>商品类别名称</th>
+                                <th>级别</th>
+                                <th>父级类别</th>
+                                <th>描述</th>
+                                <th>备注</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                        <div class="zhong">
+                            <span id="gong1"></span>
+                            <label for="tiaoshu1"></label><select name="" id="tiaoshu1" selected="" onchange="fun(this)">
+                                <option value="5" selected="selected">5条/页</option>
+                                <option value="10">10条/页</option>
+                                <option value="15">15条/页</option>
+                                <option value="20">20条/页</option>
+                            </select>
+                            <span class="iconfont icon-left layui-btn layui-btn-normal layui-btn-xs "id="pre"></span>
+                            <span id="ul-biao1">
+
+                            </span>
+                            <span class="iconfont icon-left1 layui-btn layui-btn-normal layui-btn-xs" id="next"></span>
+                        </div>
+                    </div>
+                </div>
+        </div>
+            <!-- =======================================================查看商品类别子页面/-->
+        <div class="layui-tab-item">
+            <div class="heng layui-anim-up">
+                <form action="" class=""id="Form">
+                    <div class="row row1">
+                        <div class="col-xs-4 col-md-4 col-lg-4">
+                            <div class="kao-right">
+                                <span>* 条码</span>
+                                <input class="kuang2" type="text" id="tm" placeholder="请输入内容" >
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-md-4 col-lg-4">
+                            <div class="kao-right">
+                                <span>* 一级商品类别</span>
+                                <select name="quiz"  class="kuang2 duoxuan-1"  id="xuan3" onchange="func(this)" >
+                                    <option value="" class="qxz" >请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-md-4 col-lg-4">
+                            <div class="kao-right">
+                                <span>* 二级商品类别</span>
+                                <select name="quiz" class="kuang2 duoxuan-2" id="xuan3-2" >
+                                    <option value="" class="qxz">请选择</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row row1">
+                        <div class="col-xs-4 col-md-4 col-lg-4">
+                            <div class="kao-right">
+                                <span>* 商品名称</span>
+                                <input class="kuang2" type="text" id="sp-name" placeholder="请输入内容">
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-md-4 col-lg-4">
+                            <div class="kao-right">
+                                <span>* 单位</span>
+                                <input class="kuang2" type="text" id="danwei" placeholder="请输入内容">
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-md-4 col-lg-4">
+                            <div class="kao-right">
+                                <span>* 单价</span>
+                                <input class="kuang2" type="text" id="danjia" placeholder="请输入内容">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row1">
+                        <span class="layui-btn layui-btn-normal" id="btn-tj-3">添加</span>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+            <!-- =======================================================添加商品子页面/-->
+        <div class="layui-tab-item">
+            <div class="biao" id="biao2">
+                <table class="layui-table" lay-skin="line">
+                        <thead>
+                        <tr>
+                            <th>流水号</th>
+                            <th>条码</th>
+                            <th>商品名称</th>
+                            <th>单位</th>
+                            <th>当前售价</th>
+                            <th>进货数量</th>
+                            <th>一级类别</th>
+                            <th>二级类别</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                <div class="zhong">
+                    <span id="gong"></span>
+                    <label for="tiaoshu"></label><select name="" id="tiaoshu" onchange="fun(this)">
+                        <option value="5" selected="selected">5条/页</option>
+                        <option value="10">10条/页</option>
+                        <option value="15">15条/页</option>
+                        <option value="20">20条/页</option>
+                    </select>
+                    <span class="iconfont icon-left layui-btn layui-btn-normal layui-btn-xs "id="shang"></span>
+                    <span id="ul-biao">
+
+                    </span>
+                    <span class="iconfont icon-left1 layui-btn layui-btn-normal layui-btn-xs" id="xia"></span>
+                </div>
+            </div>
+        </div>
+        <!-- =======================================================查看商品子页面/-->
+        <div class="layui-tab-item" id="search">
+            <div class="biao" id="biao3">
+                <table class="layui-table" lay-skin="line">
+                    <thead>
+                    <tr>
+                        <th>流水号</th>
+                        <th>条码</th>
+                        <th>商品名称</th>
+                        <th>单位</th>
+                        <th>当前售价</th>
+                        <th>进货数量</th>
+                        <th>一级类别</th>
+                        <th>二级类别</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <div class="zhong">
+                    <span id="gong3"></span>
+                    <label for="tiaoshu3"></label><label for="tiaoshu3"></label><select name="" id="tiaoshu3" onchange="fun(this)">
+                        <option value="5" selected="selected">5条/页</option>
+                        <option value="10">10条/页</option>
+                        <option value="15">15条/页</option>
+                        <option value="20">20条/页</option>
+                    </select>
+                    <span class="iconfont icon-left layui-btn layui-btn-normal layui-btn-xs "id="shang3"></span>
+                    <span id="ul-biao3">
+
+                    </span>
+                    <span class="iconfont icon-left1 layui-btn layui-btn-normal layui-btn-xs" id="xia3"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog container" role="document">
+        <div class="modal-content daxiao">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title">系统提示</h5>
+            </div>
+            <div class="modal-body juzhong">
+                <h4>添加成功！</h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog container" role="document">
+        <div class="modal-content daxiao">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">系统提示</h4>
+            </div>
+            <div class="modal-body juzhong">
+                <h3>请输入完整的商品信息！</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog container" role="document">
+        <div class="modal-content daxiao">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">系统提示</h4>
+            </div>
+            <div class="modal-body juzhong">
+                <h3>条码已存在，不能添加！</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal-del" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog container" role="document">
+        <div class="modal-content daxiao">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">系统提示</h4>
+            </div>
+            <div class="modal-body juzhong">
+                <h3>确认删除吗?</h3>
+            </div>
+            <div class="modal-footer">
+                <div type="button" class="queRen btn btn-primary" data-dismiss="modal">确认</div>
+                <div type="button" class="btn btn-primary" data-dismiss="modal">取消</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div id="xgk" class="layui-anim" data-anim="layui-anim-up">
+        <h4>修改商品信息</h4>
+        <hr>
+        <!--        ===========================员工信息修改内容-->
+        <form class="layui-form" action="" id="editContent" layui-filter="test1">
+
+            <div class="layui-form-item layui-form-pane">
+                <div class="layui-inline">
+                   <label class="layui-form-label">条码</label>
+                   <div class="layui-input-block">
+                    <input type="text" name="username" lay-verify="required" class="layui-input layui-disabled"  id="gaiTiaoMa">
+                   </div>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-pane">
+                <div class="layui-inline">
+                  <label class="layui-form-label">名称</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="text" lay-verify="required" class="layui-input" id="gaiName">
+                  </div>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-pane">
+                <div class="layui-inline">
+                    <label class="layui-form-label">单位</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="text" lay-verify="required" class="layui-input" id="gaiUnit">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-pane">
+                <div class="layui-inline">
+                    <label class="layui-form-label">售价</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="pwd" lay-verify="required" class="layui-input" id="gaiPrice">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-pane">
+                <div class="layui-inline">
+                  <label class="layui-form-label">进货数量</label>
+                  <div class="layui-input-block">
+                    <input type="text" name="text" lay-verify="required" class="layui-input" id="gaiKuCun">
+                  </div>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-pane">
+                <div class="layui-inline">
+                    <label class="layui-form-label">一级类别</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="text" lay-verify="required" class="layui-input" id="gaiClassOne">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-pane">
+                <div class="layui-inline">
+                    <label class="layui-form-label">二级类别</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="pwd" lay-verify="required" class="layui-input" id="gaiClassTwo">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="layui-input-block">
+                    <div type="" class="layui-btn"  lay-filter="demo1" id="tj">提交</div>
+                        <div type="reset" class="layui-btn layui-btn-primary" id="qx">取消</div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal-suoding" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog container" role="document">
+        <div class="modal-content daxiao">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">系统提示</h4>
+            </div>
+            <div class="modal-body juzhong">
+                <h3 class="sdts">锁定后将无法操作，请确认是否锁定？</h3>
+            </div>
+            <div class="modal-footer">
+                <div type="button" class="queRenSuoDing btn btn-primary" data-dismiss="modal">确认</div>
+                <div type="button" class="btn btn-primary" data-dismiss="modal">取消</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/demo.js"></script>
+
+<script>
+    var num=0;
+    var ye=0;
+    var ye1=0;
+    var ye2=0;
+    var ye3=0;
+    // 总页数/
+    var yeshu;
+    var yeshu1;
+    var yeshu2;
+    var yeshu3;
+    // 存上次的点击页数
+    var shangYiCi;
+    var shangYiCi1;
+    var shangYiCi2;
+    var shangYiCi3;
+    //显示多少页
+    var xianShi=5
+    var first;
+    var yiYouTiaoMa;
+    var inputTiaoma;
+    var start;
+    var start1;
+    var start2;
+    var start3;
+    var end;
+    var end1;
+    var end2;
+    var end3;
+
+    // 点击显示tab
+    function myTabs(i){
+        $(".li-nei").eq(i).css({backgroundColor:"#409EFF",color:"white"}).siblings().css({backgroundColor:"#F2F2F2",color: "black"
+        })
+        $(".layui-tab-item").eq(i).addClass("layui-show").siblings().removeClass("layui-show")
+    }
+
+    // 搜索按钮点击
+    $("#sousuo").click(function () {
+        if (!(num%2)){
+            $(this).css({
+                color:"white",
+                backgroundColor:"#409EFF",
+            })
+            $("#yincang").css({
+                opacity:"1",
+                right:"80px",
+                width:"520px"
+            })
+            $("#search").addClass("layui-show").siblings().removeClass("layui-show")
+        }else {
+            $(this).css({
+                color:"black",
+                backgroundColor:"#F6F6F6"
+            })
+            $("#yincang").css({
+                opacity:"0",
+                right:"0px",
+                width:"0px"
+            })
+            $("#search").removeClass("layui-show")
+        }
+        num++
+    })
+    function tianjia(num1) {
+        $(".one").eq(num1).show().siblings().hide()
+        $(".tian").eq(num1).css({color:"#409EFF"}).siblings().css({color:"black"})
+        $(".xian-d").css({
+            left:num1*130+10+"px"
+        })
+    }
+// 添加类别的点击事件/
+
+
+// <!-- =======================================================查看商品子页面函数方法/--
+//    第几页
+
+
+
+    function fun(thisDom){
+
+        //获取被选中的option标签
+        xianShi=parseInt($(thisDom).children('option:selected').val())
+        show(productData)
+    }
+    onload=function () {
+        show(productData)
+        xuanRanLei1()
+        myTabs(3)
+    }
+    // =================================================  // 根据名称 条码搜索
+
+
+
+  // =================================================  // 将数据添加到表格
+  //   添加一类名
+  //   $('#input-tj1').on('change',function () {
+  //         let choose=($(this).val())
+  //         let arrOne=['classOne',choose] //INPUT框的值
+  //         console.log(arrOne)
+  //         $("#tj-1").click(addKey(arrOne,"product"))
+  //         console.log(productData)
+  //     })
+    //   //   添加二类名
+
+    // 添加商品
+    // =================================================// 获取已经有的条码值
+
+
+
+    yiYouTiaoMa= productData.map(function (productData) { return productData.barCode});
+    //
+
+
+
+
+
+
+    $('#tm').on('change',function () {
+        inputTiaoma=($(this).val())
+        for (let i=0;i<yiYouTiaoMa.length;i++){
+            if (inputTiaoma===yiYouTiaoMa[i]){
+                $("#myModal2").modal("show")
+            }
+        }
+
+        tjProduct()
+    })
+    // 判断添加的值是否输入有值
+
+
+
+    function tjProduct(){
+        $("#btn-tj-3").click(function () {
+            let classOne=getChooseValue('option', '#xuan3>option');
+            let classTwo=getChooseValue('option', '#xuan3-2>option');
+            let arr=['barCode', '#tm', 'classOne', classOne, 'classTwo', classTwo, 'name', '#sp-name', 'unit', '#danwei', 'price', '#danjia']
+            // addKey(arr, 'product');
+            let array=[]
+
+            for (let i=0;i<arr.length;i++){
+                if (i%2!==0) array.push(arr[i]);
+            }
+            if (tagIsNull(array)) {
+                 $("#myModal1").modal("show") //有空值不能提交
+
+            }else {
+                $("#myModal").modal("show")
+                addKey(arr, 'product');
+                show(productData)
+                show1(arr1)
+                show2(arrT)
+                show3(arrMingCheng)
+                $(this).off('click');
+            }
+
+        })
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //   查看商品页
+    function addShu(start,end,productData) {
+        $("#biao2>table>tbody").html("")
+        for (let i=start;i<=end;i++){
+            if (i<productData.length){
+                $("#biao2>table>tbody").append(`
+        <tr>
+         <td class="td1">${productData[i].barCode}</td>
+            <td>${productData[i].barCode}</td>
+         <td>${productData[i].name}</td>
+         <td>${productData[i].unit}</td>
+         <td>${"￥"}${productData[i].price}</td>
+         <td>${productData[i].stockNum}</td>
+         <td>${productData[i].classOne}</td>
+         <td>${productData[i].classTwo}</td>
+         <td class="cz">
+         <button class="gai layui-btn layui-btn-normal layui-btn-xs " data-id="${productData[i].barCode}">修改</button>
+         <button class="del layui-btn layui-btn-danger layui-btn-xs " data-id="${productData[i].barCode}">删除</button>
+         <button class="suoding layui-btn layui-btn-normal layui-btn-xs" data-id="${productData[i].barCode}">锁定</button>
+         </td>
+     </tr>
+         `)
+            }
+        }
+        $("#gong").text("共"+ productData.length +"条")
+    }
+    // =================================================  // 分页显示
+    $("#ul-biao").on("click","span",function () {
+        ye=parseInt($(this).text())
+        start=(ye-1)*xianShi;
+         end=ye*xianShi-1
+        addShu(start,end,productData)
+        shangYiCi=ye
+        $(this).css({backgroundColor:"#409EFF",color:"white"}).siblings().css({backgroundColor:"#F2F2F2",color:"black"})
+    })
+    // $(".item-wo").click(function () {
+
+    //            // .siblings().css()
+    //
+    // })
+    $("#ul-biao").dblclick(function(event){
+        event.preventDefault();
+    });
+
+
+
+    function show(productData) {
+        addShu(0,xianShi-1,productData)
+        if (productData.length%xianShi!==0){
+            yeshu=parseInt(productData.length/xianShi)+1;
+
+        }else {
+            yeshu=parseInt(productData.length/xianShi)
+        }
+        $("#ul-biao>span").remove()
+        for (let i=0;i<yeshu;i++){
+            $("#ul-biao").append(`<span>${i+1}</span>`)
+        }
+    }
+    // ==============================================上一页,下一页
+    $("#shang").click(function () {
+        if (shangYiCi>1){
+            ye=shangYiCi-1
+        }else {
+            ye=shangYiCi
+        }
+        $("#ul-biao>span").eq(ye-1).css({backgroundColor:"#409EFF",color:"white"}).siblings().css({backgroundColor:"#F2F2F2",color:"black"})
+        start=(ye-1)*xianShi;
+         end=ye*xianShi-1
+        // console.log(ye)
+        addShu(start,end,productData)
+        shangYiCi=ye
+        // console.log(yeshu)
+    })
+
+    $("#xia").click(function () {
+        if (shangYiCi<yeshu){
+            ye=shangYiCi+1
+        }else {
+            ye=shangYiCi
+        }
+        $("#ul-biao>span").eq(ye-1).css({backgroundColor:"#409EFF",color:"white"}).siblings().css({backgroundColor:"#F2F2F2",color:"black"})
+        // console.log(shangYiCi)
+         start=(ye-1)*xianShi;
+         end=ye*xianShi-1
+        addShu(start,end,productData)
+        shangYiCi=ye
+    })
+    // ===========================================
+    // ================================================查看商品类别页
+    var arr1=[]
+    $('.duoxuan-2').on('change',function () {
+         choose=($(this).children('option:selected').val())
+        let arr=['classTwo',choose] //多选框选中的值
+        arr1=searchKey(arr,'product') //所有classTwo的数据
+        show1(arr1)
+        $("#gong1").text("共"+ arr1.length +"条")
+        $("#gong3").text("共"+ arr1.length +"条")
+    })
+
+
+
+//================================== 根据名称筛选商品
+    var arrMingCheng=[]
+    $('#mc').on('change',function () {
+        let name=($(this).val())
+        let array=['name',name] //多选框选中的值
+        arrMingCheng=searchKey(array,'product') //所有名称匹配的数据
+
+        $("#gong3").text("共"+ arrMingCheng.length +"条")
+
+        show3(arrMingCheng)
+
+    })
+
+
+    function nemeXs(start3,end3,arrMingCheng) {
+        $("#biao3>table>tbody").html("")
+        for (let i=start3;i<=end3;i++){
+            if (i<arrMingCheng.length){
+                $("#biao3>table>tbody").append(`
+         <tr>
+        <td class="td1">${arrMingCheng[i].barCode}</td>
+            <td>${arrMingCheng[i].barCode}</td>
+         <td>${arrMingCheng[i].name}</td>
+         <td>${arrMingCheng[i].unit}</td>
+         <td>${"￥"}${arrMingCheng[i].price}</td>
+         <td>${arrMingCheng[i].stockNum}</td>
+         <td>${arrMingCheng[i].classOne}</td>
+         <td>${arrMingCheng[i].classTwo}</td>
+         <td class="cz"><span class="gai layui-btn layui-btn-normal layui-btn-xs " data-id="${arrMingCheng[i].barCode}">修改</span>
+         <span class="del layui-btn layui-btn-danger layui-btn-xs" data-id="${arrMingCheng[i].barCode}">删除</span>
+         <span class="suoding layui-btn layui-btn-normal layui-btn-xs" data-id="${arrMingCheng[i].barCode}">锁定</span>
+         </td>
+     </tr>
+         `)
+            }
+        }
+
+
+    }
+
+
+
+
+
+    $("#ul-biao").on("click","span",function () {
+        ye3=parseInt($(this).text())
+        start3=(ye3-1)*xianShi;
+         end3=ye3*xianShi-1
+        nemeXs(start3,end3,arrMingCheng)
+        shangYiCi3=ye3
+        $(this).css({backgroundColor:"#409EFF",color:"white"}).siblings().css({backgroundColor:"#F2F2F2",color:"black"})
+    })
+
+
+    function show3(arrMingCheng) {
+        nemeXs(0,xianShi-1,arrMingCheng)
+        if (arrMingCheng.length%xianShi!==0){
+            yeshu3=Math.floor(arrMingCheng.length/xianShi)+1;
+
+        }else {
+            yeshu3=parseInt(arrMingCheng.length/xianShi)
+        }
+
+        $("#ul-biao3>span").remove()
+        for (let i=0;i<yeshu3;i++){
+            $("#ul-biao3").append(`<span>${i+1}</span>`)
+        }
+    }
+
+
+    $("#ul-biao1").on("click","span",function () {
+        ye3=parseInt($(this).text())
+         start3=(ye3-1)*xianShi;
+         end3=ye3*xianShi-1
+        nemeXs(start3,end3,arrMingCheng)
+        shangYiCi3=ye3
+        $(this).css({backgroundColor:"#409EFF",color:"white"}).siblings().css({backgroundColor:"#F2F2F2",color:"black"})
+    })
+
+
+    $("#pre").click(function () {
+        if (shangYiCi3>1){
+            ye3=shangYiCi3-1
+        }else {
+            ye3=shangYiCi3
+        }
+        $("#ul-biao1>span").eq(ye3-1).css({backgroundColor:"#409EFF",color:"white"}).siblings().css({backgroundColor:"#F2F2F2",color:"black"})
+        start3=(ye3-1)*xianShi;
+         end3=ye3*xianShi-1
+        // console.log(ye)
+        nemeXs(start3,end3,arrMingCheng)
+        shangYiCi3=ye3
+        // console.log(yeshu)
+    })
+
+    $("#next").click(function () {
+        if (shangYiCi3<yeshu3){
+            ye3=shangYiCi3+1
+        }else {
+            ye3=shangYiCi3
+        }
+        $("#ul-biao1>span").eq(ye3-1).css({backgroundColor:"#409EFF",color:"white"}).siblings().css({backgroundColor:"#F2F2F2",color:"black"})
+        // console.log(shangYiCi)
+         start3=(ye3-1)*xianShi;
+         end3=ye3*xianShi-1
+        nemeXs(start3,end3,arrMingCheng)
+        shangYiCi3=ye3
+    })
+
+
+    //================================== 根据条码筛选商品
+    var arrT=[]
+    $('#tiaoma').on('change',function () {
+        let bar=($(this).val())
+        let arrayT=['barCode',bar] //多选框选中的值
+        arrT=searchKey(arrayT,'product') //所有条码匹配的数据
+        show2(arrT)
+        $("#gong3").text("共"+ arrT.length +"条")
+    })
+
+
+    function tiaoMaXs(start2,end2,arrT) {
+        $("#biao3>table>tbody").html("")
+        for (let i=start2;i<=end2;i++){
+            if (i<arrT.length){
+                $("#biao3>table>tbody").append(`
+         <tr class="td1">
+        <td>${arrT[i].barCode}</td>
+            <td>${arrT[i].barCode}</td>
+         <td>${arrT[i].name}</td>
+         <td>${arrT[i].unit}</td>
+         <td>${"￥"}${arrT[i].price}</td>
+         <td>${arrT[i].stockNum}</td>
+         <td>${arrT[i].classOne}</td>
+         <td>${arrT[i].classTwo}</td>
+         <td class="cz"><span class="gai layui-btn layui-btn-normal layui-btn-xs" data-id="${arrT[i].barCode}" >修改</span>
+         <span class="del layui-btn layui-btn-danger layui-btn-xs" data-id="${arrT[i].barCode}">删除</span>
+         <span class="suoding  layui-btn layui-btn-normal layui-btn-xs" data-id="${arrT[i].barCode}">锁定</span>
+         </td>
+     </tr>
+         `)
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+    $("#ul-biao").on("click","span",function () {
+        ye2=parseInt($(this).text())
+        start2=(ye2-1)*xianShi;
+         end2=ye2*xianShi-1
+        tiaoMaXs(start2,end2,arrT)
+        shangYiCi2=ye2
+        $(this).css({backgroundColor:"#409EFF",color:"white"}).siblings().css({backgroundColor:"#F2F2F2",color:"black"})
+    })
+
+
+    function show2(arrT) {
+        tiaoMaXs(0,xianShi-1,arrT)
+        if (arrT.length%xianShi!==0){
+            yeshu2=Math.floor(arrT.length/xianShi)+1;
+
+        }else {
+            yeshu2=parseInt(arrT.length/xianShi)
+        }
+
+        $("#ul-biao3>span").remove()
+        for (let i=0;i<yeshu2;i++){
+            $("#ul-biao3").append(`<span>${i+1}</span>`)
+        }
+    }
+
+
+    $("#ul-biao1").on("click","span",function () {
+        ye2=parseInt($(this).text())
+        start2=(ye2-1)*xianShi;
+         end2=ye2*xianShi-1
+        tiaoMaXs(start2,end2,arrT)
+        shangYiCi2=ye2
+        $(this).css({backgroundColor:"#409EFF",color:"white"}).siblings().css({backgroundColor:"#F2F2F2",color:"black"})
+    })
+
+
+    $("#pre").click(function () {
+        if (shangYiCi2>1){
+            ye2=shangYiCi2-1
+        }else {
+            ye2=shangYiCi2
+        }
+        $("#ul-biao1>span").eq(ye2-1).css({backgroundColor:"#409EFF",color:"white"}).siblings().css({backgroundColor:"#F2F2F2",color:"black"})
+        start2=(ye2-1)*xianShi;
+         end2=ye2*xianShi-1
+        // console.log(ye)
+        tiaoMaXs(start2,end2,arrT)
+        shangYiCi2=ye2
+        // console.log(yeshu)
+    })
+
+    $("#next").click(function () {
+        if (shangYiCi2<yeshu2){
+            ye2=shangYiCi2+1
+        }else {
+            ye2=shangYiCi2
+        }
+        $("#ul-biao1>span").eq(ye2-1).css({backgroundColor:"#409EFF",color:"white"}).siblings().css({backgroundColor:"#F2F2F2",color:"black"})
+        // console.log(shangYiCi)
+         start2=(ye2-1)*xianShi;
+         end2=ye2*xianShi-1
+        tiaoMaXs(start2,end2,arrT)
+        shangYiCi2=ye2
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function chaKan(start1,end1,arr1) {
+        $("#biao1>table>tbody").html("")
+        $("#biao3>table>tbody").html("")
+        for (let i=start1;i<=end1;i++){
+            if (i<arr1.length){
+                $("#biao1>table>tbody").append(`
+         <tr>
+         <td class="td1">${arr1[i].barCode}</td>
+            <td>${arr1[i].classTwo}</td>
+         <td>${"二级"}</td>
+         <td>${arr1[i].classOne}</td>
+         <td>${arr1[i].describe}</td>
+         <td>${" "}</td>
+         <td class="cz"><span class="gai layui-btn layui-btn-normal layui-btn-xs gai" data-id="${arr1[i].barCode}">修改</span>
+         <span class="del layui-btn layui-btn-danger layui-btn-xs" data-id="${arr1[i].barCode}">删除</span>
+         <span class="suoding layui-btn layui-btn-normal layui-btn-xs" data-id="${arr1[i].barCode}">锁定</span>
+         </td>
+     </tr>
+         `)
+            }
+        }
+
+        for (let i=start1;i<=end1;i++){
+            if (i<arr1.length){
+                $("#biao3>table>tbody").append(`
+        <tr>
+         <td class="td1">${arr1[i].barCode}</td>
+            <td>${arr1[i].barCode}</td>
+         <td>${arr1[i].name}</td>
+         <td>${arr1[i].unit}</td>
+         <td>${"￥"}${arr1[i].price}</td>
+         <td>${arr1[i].stockNum}</td>
+         <td>${arr1[i].classOne}</td>
+         <td>${arr1[i].classTwo}</td>
+         <td class="cz">
+         <button class="xiugai layui-btn layui-btn-normal layui-btn-xs"  data-id="${arr1[i].barCode}">修改</button>
+         <button class="del layui-btn layui-btn-danger layui-btn-xs" data-id="${arr1[i].barCode}">删除</button>
+         <button class="suoding layui-btn layui-btn-normal layui-btn-xs" data-id="${arr1[i].barCode}">锁定</button>
+         </td>
+     </tr>
+         `)
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+    $("#ul-biao").on("click","span",function () {
+        ye1=parseInt($(this).text())
+        start1=(ye1-1)*xianShi;
+         end1=ye1*xianShi-1
+        chaKan(start1,end1,arr1)
+        shangYiCi1=ye1
+        $(this).css({backgroundColor:"#409EFF",color:"white"}).siblings().css({backgroundColor:"#F2F2F2",color:"black"})
+    })
+
+
+    function show1(arr1) {
+        chaKan(0,xianShi-1,arr1)
+        if (arr1.length%xianShi!==0){
+            yeshu1=Math.floor(arr1.length/xianShi)+1;
+
+        }else {
+            yeshu1=parseInt(arr1.length/xianShi)
+        }
+        $("#ul-biao1>span").remove()
+        $("#ul-biao3>span").remove()
+        for (let i=0;i<yeshu1;i++){
+            $("#ul-biao1").append(`<span>${i+1}</span>`)
+            $("#ul-biao3").append(`<span>${i+1}</span>`)
+        }
+    }
+
+
+    $("#ul-biao1").on("click","span",function () {
+        ye1=parseInt($(this).text())
+         start1=(ye1-1)*xianShi;
+         end1=ye1*xianShi-1
+        chaKan(start1,end1,arr1)
+        shangYiCi1=ye1
+        $(this).css({backgroundColor:"#409EFF",color:"white"}).siblings().css({backgroundColor:"#F2F2F2",color:"black"})
+    })
+
+
+    $("#pre").click(function () {
+        if (shangYiCi1>1){
+            ye1=shangYiCi1-1
+        }else {
+            ye1=shangYiCi1
+        }
+        $("#ul-biao1>span").eq(ye1-1).css({backgroundColor:"#409EFF",color:"white"}).siblings().css({backgroundColor:"#F2F2F2",color:"black"})
+         start1=(ye1-1)*xianShi;
+         end1=ye1*xianShi-1
+        // console.log(ye)
+        chaKan(start1,end1,arr1)
+        shangYiCi1=ye1
+        // console.log(yeshu)
+    })
+
+    $("#next").click(function () {
+        if (shangYiCi1<yeshu1){
+            ye1=shangYiCi1+1
+        }else {
+            ye1=shangYiCi1
+        }
+        $("#ul-biao1>span").eq(ye1-1).css({backgroundColor:"#409EFF",color:"white"}).siblings().css({backgroundColor:"#F2F2F2",color:"black"})
+        // console.log(shangYiCi)
+         start1=(ye1-1)*xianShi;
+         end1=ye1*xianShi-1
+        chaKan(start1,end1,arr1)
+        shangYiCi1=ye1
+        $(this).off('click');
+    })
+
+    // =====================================================渲染一级类名
+    var  leiOne=searchKey(['dataTable','商品'],'types')
+    var a = [];
+    var leiOnea
+     leiOnea= leiOne.map(function (types) { return types.classOne});
+    var tianClassOne = [];
+    var tianOne;
+    var tianTwo;
+
+    $("#input-tj1").on("change",function () {
+        tianOne =$(this).val()
+        console.log(tianOne)
+        $("#tj-1").click(function () {
+
+            tianClassOne=["classOne",tianOne,]
+            a.push(tianOne)
+            $("#myModal").modal("show")
+
+            xuanRanLei1()
+            $(this).off('click');
+        })
+
+    })
+
+
+
+
+
+
+    $("#input-tj2").on("change",function () {
+         tianTwo =$(this).val()
+        console.log(tianTwo)
+        $("#btn-tj").click(function () {
+
+            tianClassOne=["classOne",tianOne,"classTwo",tianTwo]
+            addKey(tianClassOne,"types")
+            $("#myModal").modal("show")
+            xuanRanLei1()
+
+           // addKey(types,"product")
+            $(this).off('click');
+        })
+    })
+
+     q()
+    function q(arr) {
+        leiOnea.forEach(item => {
+            return a.includes(item) ? '' : a.push(item)
+        });
+        return a
+    }
+    function xuanRanLei1() {
+        $(".duoxuan-1").children("option").remove("option:not(.qxz)")
+        for (let i=0;i<a.length;i++){
+          $(".duoxuan-1").append(`<option>${a[i]}</option>`)
+        }
+    }
+// 根据1类渲染2类
+
+    function xuanRanLei2() {
+        $(".duoxuan-2").children("option").remove("option:not(.qxz)")
+        for (let i=0;i<searchClassTwo(first).length;i++){
+
+            $(".duoxuan-2").append(`<option>${searchClassTwo(first)[i]}</option>`)
+
+        }
+    }
+
+
+
+    function func(thisDom){
+         first=($(thisDom).children('option:selected').val())
+        //获取被选中的option标签
+        searchClassTwo(first)
+        xuanRanLei2()
+        // console.log(searchClassTwo(first))
+        // console.log(thisDom)
+
+    }
+
+
+
+
+
+
+
+    // =============================================删除
+
+    $("tbody").on("click",".del",function del() {
+        $("#myModal-del").modal("show")
+        let hang=$(this).parent().parent().children('.td1')[0];
+        let hangJieDian=$(this).parent().parent();
+        $(".queRen").click(function () {
+            $(this).off('click');
+            deleteKey(['barCode',hang],"product")
+            hangJieDian.remove()
+            show(productData)
+            show1(arr1)
+            show2(arrT)
+            show3(arrMingCheng)
+        })
+
+    });
+    // deleteKey(['barCode',"001"],"product")
+    // =============================================修改
+    $("tbody").on("click",".gai",function xiuGai() {
+        var _this = this;
+        $("#xgk").show()
+        let TM=$(this).parent().parent().children('.td1')[0]
+        console.log(TM)
+
+        var mydata = productData.filter(function (item) {
+            return item.barCode==$(_this).attr("data-id")
+            // item.barCode == $(_this).attr("data-barCode")
+
+        });
+
+   // 拿到默认值
+        // console.log(_this)
+        $("#gaiTiaoMa").val(mydata[0].barCode);
+        $("#gaiName").val(mydata[0].name);
+        $("#gaiUnit").val(mydata[0].unit);
+        $("#gaiPrice").val(mydata[0].price);
+        $("#gaiClassOne").val(mydata[0].classOne);
+        $("#gaiClassTwo").val(mydata[0].classTwo);
+        $("#gaiKuCun").val(mydata[0].stockNum);
+        $("#gaiMiaoShu").val(mydata[0].describe);
+
+        $("#tj").click(function () {
+            var obj = [
+                "barCode",$("#gaiTiaoMa").val(),
+                "name",$("#gaiName").val(),
+                'unit',$("#gaiUnit").val(),
+                'price',$("#gaiPrice").val(),
+                'classOne',$("#gaiClassOne").val(),
+                'classTwo',$("#gaiClassTwo").val(),
+                'stockNum',$("#gaiKuCun").val(),
+            ];
+            console.log($("#gaiTiaoMa").val())
+            $("#xgk").hide()
+           changeKey(["barCode",TM],obj,"product")
+
+              show(productData)
+            show1(arr1)
+            show2(arrT)
+            show3(arrMingCheng)
+            $(this).off('click');
+        })
+        $(this).off('click');
+    })
+    $("#qx").click(function () {
+        $("#xgk").hide()
+        $(this).off('click');
+    })
+
+   // 将修改后的值赋给框框
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // ============================================锁定
+    var t=0;
+    $("table>tbody").on("click",".cz .suoding",function(){
+        let trZ=$(this).parent().parent()
+        let anniu=$(this).siblings()
+        let b=$(this)
+        $("#myModal-suoding").modal("show")
+        $(".queRenSuoDing").click(function () {
+            if (t%2===0) {
+                   trZ.css("color","red");
+                   anniu.attr("disabled",true);
+                    $(this).off('click');
+                    b.text("解锁");
+                    b.css({
+                        backgroundColor:"red"
+                    })
+                    $(".sdts").text("请确认是否解锁?")
+            }
+            else{
+                    $(this).off('click');
+                    trZ.css("color","black");
+                   anniu.siblings().attr("disabled",false);
+                    b.text("锁定");
+                    b.css({
+                        backgroundColor:"#409EFF"
+                    })
+            }
+            t++;
+            })
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

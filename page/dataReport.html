@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="../font/iconfont.css">
+  <link rel="stylesheet" href="../font/demo.css">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/dataReport.css">
+
+
+</head>
+
+<body>
+
+  <!-- 主体部分 -->
+  <div id="baobiao" >
+    <!-- 销售管理及小图标 -->
+    <div class="dateTop-wrap">
+      <span class="iconfont icon-shouyintai1"></span>
+      <span>销售管理</span>
+    </div>
+
+    <!-- 选择统计方式等 -->
+    <div class="dataBtn-wrap">
+      <div class="dataBtn-box">
+
+        <!-- 选择方式 -->
+        <div class="btn-way-box">
+          <div class="btn-way" id="btnWay">
+            <span>统计方式</span>
+            <span class="iconfont icon-xiangxia"></span>
+          </div>
+
+          <!-- 选择统计方式 -->
+          <div class="way-box" id="wayBox">
+            <div class="tri"></div>
+            <div class="way">员工</div>
+            <div class="way">商品类别</div>
+          </div>
+
+        </div>
+
+        <!-- 选择年份 -->
+        <div class="dateYear-box">
+          <div class="dateBtn" id="yearBtn">
+            <span>请选择年份</span>
+            <span class="iconfont icon-xiangxia"></span>
+          </div>
+          <div class="yearBox" id="yearBox">
+            <div class="tri"></div>
+            <!-- <div class="addYear">员工</div>
+            <div class="addYear">商品类别</div> -->
+          </div>
+        </div>
+
+
+
+        <!-- 选择月份 -->
+        <!-- <div class="dateYear-box">
+          <div class="dateBtn" id="MonthBtn">
+            <span>月</span>
+            <span class="iconfont icon-xiangxia"></span>
+          </div>
+          <div class="yearBox" id="MonthBox">
+            <div class="tri"></div>
+            <div class="addYear">员工</div>
+            <div class="addYear">商品类别</div>
+          </div>
+        </div> -->
+        
+        <!-- 选择员工号 -->
+        <div class="dateYear-box">
+          <div class="dateBtn" id="staff">
+            <input id="inputStaff" value="请输入员工工号" autocomplete="off"></input>
+          </div>
+        </div>
+        <!-- 选择类别一 -->
+        <div class="dateYear-box">
+          <div class="dateBtn" id="type1">
+            <span>一类商品</span>
+            <span class="iconfont icon-xiangxia"></span>
+          </div>
+          <div class="yearBox" id="type1Box">
+            <div class="tri"></div>
+            <!-- <div class="addYear">员工</div>
+            <div class="addYear">商品类别</div> -->
+          </div>
+        </div>
+        <!-- 选择类别二 -->
+        <div class="dateYear-box">
+          <div class="dateBtn" id="type2">
+            <span>二类商品</span>
+            <span class="iconfont icon-xiangxia"></span>
+          </div>
+          <div class="yearBox" id="type2Box">
+            <div class="tri"></div>
+            <!-- <div class="addYear">员工</div>
+            <div class="addYear">商品类别</div> -->
+          </div>
+        </div>
+
+
+        <div id="Btn">
+          <span>查看</span>
+        </div>
+        <div id="BtnClear">
+          <span>取消</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 数据报表部分 -->
+    <div class="dataReport-wrap">
+      <!-- <a href="">打印报表</a> -->
+      <div class="dataReport-box" id="dataReport">
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script src="../jquery/jquery-1.11.3.js"></script>
+  <script src="../bootstrap/js/bootstrap.min.js"></script>
+  <script src="../js/echart.js"></script>
+  <script src="../js/walden.js"></script>
+  <script src="../js/demo.js"></script>
+
+  <!--<script src="../js/data_system.js"></script>-->
+  <script src="../js/use_data.js"></script>
+  <script src="../js/dataReport.js"></script>
+
+
+  <script>
+
+
+
+  </script>
+</body>
+
+</html>

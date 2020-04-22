@@ -1,0 +1,150 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-size: 100px;
+}
+body{
+    font-size: 16px;
+}
+/*.row{*/
+/*    border: 1px red solid;*/
+/*}*/
+#head_cbrow{
+    border-bottom: 1px gray solid;
+    padding: 20px 0px;
+}
+#shanghuo{
+    margin-left: 0px;
+}
+.cbcontent{
+    background-color: #F6F6F6;
+    padding: 20px 0px;
+    margin-top: 20px;
+    position: relative;
+}
+.clear:after{
+    content: "";
+    display: none;
+    clear: both;
+}
+#cbtiaoma{
+    float: left;
+    height: 40px;
+    line-height: 40px;
+}
+#cbshuru{
+    margin-left: 20px;
+    float: left;
+    border-radius: 5px;
+    border: 1px gray solid;
+    height: 40px;
+    width: 250px;
+    line-height: 40px;
+}
+#cb_tianjia{
+    margin-left: 50px;
+    float: left;
+    border-radius: 5px;
+    border: 1px gray solid;
+    height: 40px;
+    width: 50px;
+    text-align: center;
+    line-height: 40px;
+    background-color:#409EFF;
+    cursor: pointer;
+}
+#cbxuanzhe{
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 50px;
+}
+#cbdaochu{
+    float: left;
+    margin-left: 100px;
+    height: 40px;
+    line-height: 40px;
+}
+/*input[type="radio"]{*/
+/*    display: none;*/
+/*}*/
+/*.radio-style:before{*/
+/*    content: "";*/
+/*    width: 12px;*/
+/*    height: 12px;*/
+/*    display: inline-block;*/
+/*    border: black 1px solid;*/
+/*    box-sizing: border-box;*/
+/*    margin-right: 10px;*/
+/*}*/
+/*input[type="radio"]:checked+.radio-style:before{*/
+/*    background-color: red;*/
+/*}*/
+
+.cbcontent1>div{
+    height: 50px;
+}
+
+#cbbiaoge{
+    float: left;
+}
+#cbqueding{
+    float: left;
+    margin-left: 70px;
+    width: 150px;
+    text-align: center;
+    padding: 10px 40px;
+    border: 1px solid gray;
+    background-color: #409EFF;
+    color: white;
+}
+#cbbiaoge>thead>tr th{
+    padding: 10px 40px;
+    background-color: #409EFF;
+    color: white;
+    text-align: center;
+}
+th,tr,td{
+    border: 1px gray solid;
+}
+#cbbiaoge>tbody>tr td{
+    padding: 10px 40px;
+    text-align: center;
+}
+/*.div_cbicon{*/
+/*    position: relative;*/
+/*    left: 40px;*/
+/*    bottom: 20px;*/
+/*}*/
+.shuzi{
+    position: relative;
+}
+#cbtianjia1{
+    position: absolute;
+    top: 0px;
+    right: 5px;
+}
+#cbtianjia2{
+    position: absolute;
+    top: 18px;
+    right: 5px;
+}
+#cbquerenshanghuo{
+    width: 150px;
+    height: 50px;
+    background-color: #409EFF;
+    box-shadow: 5px 5px 5px #888888;
+    border: gray 1px solid;
+    position: absolute;
+    top: 110px;
+    left: 728px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    display: none;
+}
+
+
+

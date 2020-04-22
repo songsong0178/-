@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品上货</title>
+    <link rel="stylesheet" href="../css/shanghuo.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" chrome="1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <script src="../jquery/jquery-1.11.3.js"></script>
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <!--<script src="../js/data_system.js"></script>-->
+    <script src="../js/use_data.js"></script>
+
+</head>
+<body style="padding: 0px 20px">
+<!--**************开头*****************-->
+<div class="row " id="head_cbrow">
+    <div class="col-lg-10">
+        <span class="iconfont icon-shouyintai1"></span>
+        <span id="shanghuo">门店上货</span>
+    </div>
+</div>
+<!--    **********内容**************-->
+ <div class="row cbcontent clear">
+    <!--    *********************1 选择**************-->
+    <div class="row cbcontent1">
+        <div class="col-lg-10 clear" >
+            <div id="cbtiaoma">条码</div>
+            <input typeof="text" id="cbshuru" disabled='disabled' name="shuru" placeholder="请输入商品条码或扫码" >
+            <div id="cb_tianjia" onclick="cb_jiashuju(this)">添加</div>
+            <div id="cbxuanzhe">
+                <label for="cbshoudong">
+                    <input id="cbshoudong" name="fangshi" type="checkbox">
+                    <span class="radio-style">手动输入条形码</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!--    **************3表格**************-->
+    <div class="row cbcontent3">
+        <div class="col-lg-10 clear">
+            <table id="cbbiaoge">
+                <thead>
+                <tr>
+                    <th>条形码</th>
+                    <th>商品类别</th>
+                    <th>商品名称</th>
+                    <th>单位</th>
+                    <th>上货数量</th>
+                </tr>
+                </thead>
+                <tbody id="cbshuju">
+                </tbody>
+            </table>
+                <div id="pages">
+                    
+
+                </div>
+            <div id="cbqueding" onclick="cbxianshi(this)">确定</div>
+        </div>
+    </div>
+    <div id="cbquerenshanghuo">
+            确定上货
+    </div>
+</div>
+<script src="../js/shanghuo.js"></script>
+</body>
+</html>

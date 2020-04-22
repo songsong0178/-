@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo1</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <style>
+        .tab{
+            height:800px;
+            background-color: #212930;
+        }
+        *{
+            margin:0;
+            padding:0;
+        }
+        .row{
+            margin-right:0;
+        }
+        #member{
+            padding:20px 0 10px;
+            border-bottom: 1px solid #808080;
+            margin-bottom: 20px;
+        }
+        #member>span{
+            margin-right: 5px;
+        }
+        #listContent{
+            margin-top: 30px;
+            position: relative;
+        }
+        td,th{
+            text-align: center;
+        }
+        .caozuo button{
+            padding:0 10px;
+        }
+        #editModal,#showModal{
+            top:100px;
+            padding: 20px;
+            border: 1px solid red;
+            position: absolute;
+            left:25%;
+            background-color: #fcfcfc;
+            display: none;
+            width:600px;
+            height:730px;
+            overflow: hidden;
+        }
+        #editModal h4,#showModal h4{
+            float:left;
+        }
+        #close1,#close2{
+            float:right;
+            font-size:25px;
+            cursor:pointer;
+        }
+        /*表单名称不换行*/
+        label{
+            white-space:nowrap!important;
+        }
+        #addMember input{
+            border-radius: 5px;
+        }
+        #addMember>div{
+            margin-bottom: 30px;
+        }
+        #addBtn{
+            margin-left: 100px;
+            margin-right: 30px;
+        }
+        input::placeholder{
+            color: #cccccc;
+        }
+        #listContent>div:nth-child(2){
+            margin-top: 20px;
+        }
+        #search{
+            position: absolute;
+            right:0;
+            top:-70px;
+            width:360px;
+            opacity: 0;
+        }
+        #search>input{
+            display: inline-block;
+            height:30px;
+            width:300px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        #searchBtn{
+           margin:0 20px;
+        }
+        button{
+            cursor: pointer;
+        }
+        #tijiao{
+            margin-left:100px;
+        }
+        #tianjia td,
+        #sousuo td{
+            height:50px;
+            line-height: 50px;
+        }
+        img{
+          width:40px;
+        }
+        .caozuo button{
+            font-size:14px;
+        }
+    </style>
+    <script src="../jquery/jquery-1.11.3.js"></script>
+    <script src="../layui/layui.js"></script>
+</head>
+<body>
+    <!--员工信息-->
+    <div>
+        <div id="member"><span class="iconfont icon-shouyintai1"></span>员工管理</div>
+            <div class="layui-tab layui-tab-card">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">查看员工</li>
+                    <li>添加员工</li>
+                    <li id="memberSearch">搜索员工</li>
+                </ul>
+                <div class="layui-tab-content" style="height: 600px;" id="listContent">
+
+                    <!--查看员工-->
+                    <div class="layui-tab-item layui-show">
+                        <table id="demo" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text text-center">工号</th>
+                                    <th class="text text-center">姓名</th>
+                                    <th class="text text-center">头像</th>
+                                    <th class="text text-center">身份证</th>
+                                    <th class="text text-center">RIFD卡号</th>
+                                    <th class="text text-center">联系电话</th>
+                                    <th class="text text-center">在职状态</th>
+                                    <th class="text text-center">操作等级</th>
+                                    <th class="text text-center">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tianjia">
+                            <!--                 添加员工的信息-->
+
+                            </tbody>
+                        </table>
+                        <!--                   分页-->
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-5">
+                                <nav aria-label="Page navigation example" id="pageBar">
+
+                                </nav>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+                    </div>
+
+                    <!--添加员工-->
+                    <div class="layui-tab-item row">
+                        <div class="col-md-3"></div>
+                        <form class="layui-form col-md-8" action="" lay-filter="example" id="addMember">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">* 工号</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="id" required lay-verify="required" autocomplete="off" placeholder="请输入员工工号" class="layui-input" id="addId">
+                                </div>
+                                <label class="layui-form-label">员工姓名</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="username" required lay-verify="required" class="layui-input" id="addName" placeholder="请输入员工姓名">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">* 卡号</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="text" lay-verify="required" class="layui-input" id="addRifd" placeholder="请输入RIFD卡号">
+                                </div>
+                                <label class="layui-form-label">身份证</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="text" lay-verify="required" class="layui-input" id="addIdCard" placeholder="请输入身份证号" required>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">* 密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input" id="addPwd" required lay-verify="required">
+                                </div>
+                                <label class="layui-form-label">入职日期</label>
+                                <div class="layui-input-inline" id="addJoinDate">
+                                    <input type="text" name="date" id="date2" lay-verify="date"  autocomplete="off" class="layui-input" placeholder="请输入入职日期">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">在职状态</label>
+                                <div class="layui-input-inline">
+                                    <select name="state" lay-filter="state" id="addState">
+                                        <option value="在职">在职</option>
+                                        <option value="离职">离职</option>
+                                        <option value="休假">休假</option>
+                                    </select>
+                                </div>
+                                <label class="layui-form-label">操作等级</label>
+                                <div class="layui-input-inline">
+                                    <select name="level" lay-filter="level" id="addLevel">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">性别</label>
+                                <div class="layui-input-inline">
+                                    <input type="radio" name="sex" value="男" title="男" checked="">
+                                    <input type="radio" name="sex" value="女" title="女">
+                                </div>
+                                <label class="layui-form-label">电话号码</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="text" lay-verify="required" class="layui-input" id="addTel" placeholder="请输入电话号码">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1" id="addBtn">立即提交</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+                        </form>
+                        <!--<div class="col-md-2"></div>-->
+                    </div>
+                    <!--搜索员工-->
+                    <div class="layui-tab-item">
+                        <table id="demo1" class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th class="text text-center">工号</th>
+                                <th class="text text-center">姓名</th>
+                                <th class="text text-center">头像</th>
+                                <th class="text text-center">身份证</th>
+                                <th class="text text-center">RIFD卡号</th>
+                                <th class="text text-center">联系电话</th>
+                                <th class="text text-center">在职状态</th>
+                                <th class="text text-center">操作等级</th>
+                                <th class="text text-center">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody id="sousuo">
+                            <!--                 搜索的员工的信息-->
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="search">
+                        <input type="text" name="id" autocomplete="off" placeholder="请输入员工工号或者姓名进行搜索" class="layui-input" id="searchInput">
+                        <span class="layui-icon layui-icon-search" id="searchBtn" onclick="addShow()"></span>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <!--        修改框-->
+    <div id="editModal" class="layui-anim" data-anim="layui-anim-up">
+        <h4>修改员工信息</h4>
+        <span class="layui-icon" id="close1">&#x1006;</span>
+        <hr>
+        <!--        ===========================员工信息修改内容-->
+        <form class="layui-form layui-form-pane" action="" id="editContent" layui-filter="test1">
+            <div class="layui-form-item">
+                <label class="layui-form-label">工号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="id" lay-verify="required" class="layui-input layui-disabled" id="editId" disabled>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">员工姓名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="username" lay-verify="required" class="layui-input" id="editName">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">身份证</label>
+                <div class="layui-input-block">
+                    <input type="text" name="text" lay-verify="required" class="layui-input" id="editIdCard">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">RFID卡号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="text" lay-verify="required" class="layui-input" id="editRifd">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-block">
+                        <input type="password" name="password" required class="layui-input" id="editPwd">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">联系电话</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="phone" lay-verify="required" class="layui-input" id="editTel">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">性别</label>
+                <div class="layui-input-block" id="editSex">
+                    <input type="radio" name="sex" value="男" title="男" checked="">
+                    <input type="radio" name="sex" value="女" title="女">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">入职日期</label>
+                    <div class="layui-input-block" id="editJoinDate">
+                        <input type="text" name="date" id="date"  autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">在职状态</label>
+                <div class="layui-input-block">
+                    <select name="state" lay-filter="state" id="editState" onchange="func(this)">
+                        <option value="在职">在职</option>
+                        <option value="离职">离职</option>
+                        <option value="休假">休假</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">操作等级</label>
+                <div class="layui-input-block">
+                    <select name="level" lay-filter="level" id="editLevel" onchange="func(this)">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="submit" class="layui-btn"  lay-filter="demo1" id="tijiao">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--        查看框-->
+    <div id="showModal" class="layui-anim" data-anim="layui-anim-up">
+        <h4>查看员工信息</h4>
+        <span class="layui-icon" id="close2">&#x1006;</span>
+        <hr>
+        <!--         ===========================员工信息查看-->
+        <form class="layui-form layui-form-pane" action="" id="showContent" layui-filter="test2">
+            <div class="layui-form-item">
+                <label class="layui-form-label">工号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="id" lay-verify="required" class="layui-input" id="showId">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">员工姓名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="username" lay-verify="required" class="layui-input" id="showName">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">身份证</label>
+                <div class="layui-input-block">
+                    <input type="text" name="text" lay-verify="required" class="layui-input" id="showIdCard">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">RFID卡号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="text" lay-verify="required" class="layui-input" id="showRifd">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">密码</label>
+                    <div class="layui-input-block">
+                        <input type="password" name="pwd" lay-verify="required" class="layui-input" id="showPwd">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">联系电话</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="phone" lay-verify="required" class="layui-input" id="showTel">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">性别</label>
+                <div class="layui-input-block" id="showSex">
+                    <input type="radio" name="sex" value="男" title="男" checked="">
+                    <input type="radio" name="sex" value="女" title="女">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">入职日期</label>
+                    <div class="layui-input-block" id="showJoinDate">
+                        <input type="text" name="date" id="date1" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">在职状态</label>
+                <div class="layui-input-block">
+                    <select name="state" lay-filter="state" id="showState">
+                        <option value="在职">在职</option>
+                        <option value="离职">离职</option>
+                        <option value="休假">休假</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">操作等级</label>
+                <div class="layui-input-block">
+                    <select name="level" lay-filter="level" id="showLevel">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+            </div>
+           <!-- <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">确认</button>
+                </div>
+            </div>-->
+        </form>
+    </div>
+
+    <script src="../jquery/jquery-1.11.3.js"></script>
+<!--    <script src="../js/data_system.js"></script>-->
+    <script src="../js/use_data.js"></script>
+    <script>
+        layui.use('element', function () {
+            var element = layui.element;
+        });
+        layui.use('form', function(){
+            var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+            //但是，如果你的HTML是动态生成的，自动渲染就会失效
+            //因此你需要在相应的地方，执行下述方法来进行渲染
+            form.render();
+            form.render('select', 'level');
+            form.render('select', 'state');
+            form.render('radio','sex');
+        });
+        layui.use('laydate', function(){
+            var laydate = layui.laydate;
+            laydate.render({
+                elem: '#date' ,//指定元素
+                trigger:"click" //解决日历框闪退
+            });
+            laydate.render({
+                elem: '#date1', //指定元素
+                trigger:"click" //解决日历框闪退
+            });
+            laydate.render({
+                elem: '#date2', //指定元素
+                trigger:"click" //解决日历框闪退
+            });
+        });
+        var num = 1;  //表示当前页
+        var pageNum;  //总页数
+        window.onload = function(){
+            show(membersData);
+            fenye(pageNum)
+        };
+
+        function show(myData){
+            showTbody(0,4,myData);
+            pageNum = parseInt(myData.length/5)+1;
+            for (let i=0;i<pageNum;i++){
+                $("#pages").append(`<div>${i+1}</div>`)
+            }
+        }
+
+    //  点击每个按钮显示对应的数据
+        /*$("#pages").on("click","div",function () {
+            var page = parseInt($(this).text());
+            var qishi = (page-1)*5;
+            var jieshu = (page*5)-1;
+            showTbody(qishi,jieshu,membersData);
+            num = page
+        });*/
+
+    //  表格数据渲染
+        function showTbody(qishi,jieshu,data){
+            $("#tianjia").html("");
+            for(let i=qishi;i<=jieshu;i++){
+                // console.log(data[i].img)
+                if(i<data.length){
+                    $("#tianjia").append(`
+                        <tr>
+                            <td>${data[i].id}</td>
+                            <td>${data[i].name}</td>
+                            <td><img src=${data[i].img} alt="图片不存在"></td>
+                            <td>${data[i].idCard}</td>
+                            <td>${data[i].rifd}</td>
+                            <td>${data[i].tel}</td>
+                            <td>${data[i].state}</td>
+                            <td>${data[i].level}</td>
+                            <td class="caozuo">
+                                <button class="xiugai layui-btn layui-btn-xs layui-btn-normal" data-id="${data[i].id}">修改</button>
+                                <button class="chakan layui-btn layui-btn-xs layui-btn-warm" data-id="${data[i].id}">查看</button>
+                                <button class="block layui-btn layui-btn-xs layui-btn-danger" data-id="${data[i].id}">锁定</button>
+                            </td>
+                        </tr>`)
+                }
+            }
+        }
+
+    //    1.1 创建分页
+        function fenye(pageSum) {
+            $('#pageBar').html('');
+            var str = `<ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link pre" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">上一页</span>
+                                </a>
+                            </li>`;
+            for (var i = 1; i <= pageSum; i++) {
+                str += `<li class="page-item"><a class="page-link shuzi" href="#">${i}</a></li>`
+            }
+            str += ` <li class="page-item">
+                                <a class="page-link next" href="#" aria-label="Next">
+                                    <span aria-hidden="true">下一页</span>
+                                </a>
+                            </li>
+                        </ul>`;
+            $('#pageBar').append(str)
+        }
+
+    //    1.2 点击分页显示对应的数据
+        $("#pageBar").on("click",".shuzi",function(){  //分页数字
+            let page = parseInt($(this).text());
+            let qishi = (page-1)*5;
+            let jieshu = (page*5)-1;
+            showTbody(qishi,jieshu,membersData);
+            num = page;
+            console.log(1)
+        }).on("click",".pre",function () {   //上一页
+            let page;
+            num>1 ? page = num - 1:page = num;
+            let qishi = (page-1)*5;
+            let jieshu = (page*5)-1;
+            showTbody(qishi,jieshu,membersData);
+            num = page
+        }).on("click",".next",function () {   //下一页
+            let page;
+            num < pageNum ? page = num + 1:page = num;
+            let qishi = (page-1)*5;
+            let jieshu = (page*5)-1;
+            showTbody(qishi,jieshu,membersData);
+            num = page
+        });
+
+    //  2.1 操作列的 修改和查看 功能
+        $("table>tbody").on("click",".caozuo .xiugai",function(){
+            var _this = this;
+            $("#editModal").show();
+            var mydata = membersData.filter(function (item) {
+                return item.id == $(_this).attr("data-id")
+            });
+            // var mydata = membres.filter(item => item.id == $(this).attr("data-id"));
+            // console.log(mydata[0].joinDate);
+            $("#editId").val(mydata[0].id);
+            $("#editName").val(mydata[0].name);
+            $("#editIdCard").val(mydata[0].idCard);
+            $("#editRifd").val(mydata[0].rifd);
+            $("#editPwd").val(mydata[0].cardPwd);
+            $("#editState").val(mydata[0].state);
+            $("#editTel").val(mydata[0].tel);
+            $("#date").val(mydata[0].joinDate);
+            $("#editLevel").val(mydata[0].level);
+            if (mydata[0].sex == "男"){
+                $('#editSex>input').eq(0).attr('checked',true);
+                $("#editSex").val(mydata[0].sex);
+                // console.log(1);
+            }else{
+                $('#editSex>input').eq(1).attr('checked',true);
+                $("#editSex").val(mydata[0].sex);
+                // console.log(0);
+            }
+            layui.use('form', function(){
+                var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+                form.render();
+                form.render("radio");
+            });
+        }).on("click",".caozuo .chakan",function(){
+            //  点击查看按钮
+            var _this = this;
+            $("#showModal").show();
+            var mydata = membersData.filter(function (item) {
+                return item.id == $(_this).attr("data-id")
+            });
+            // var mydata = membres.filter(item => item.id == $(this).attr("data-id"));
+            $("#showId").val(mydata[0].id);
+            $("#showName").val(mydata[0].name);
+            $("#showIdCard").val(mydata[0].idCard);
+            $("#showRifd").val(mydata[0].rifd);
+            $("#showPwd").val(mydata[0].cardPwd);
+            $("#showState").val(mydata[0].state);
+            $("#date1").val(mydata[0].joinDate);
+            $("#showTel").val(mydata[0].tel);
+            $("#showLevel").val(mydata[0].level);
+            // $("#showSex").val(mydata[0].sex);
+            if (mydata[0].sex == "男"){
+                $('#showSex>input').eq(0).attr('checked',true);
+                $("#showSex").val(mydata[0].sex);
+                // console.log(1);
+            }else{
+                $('#showSex>input').eq(1).attr('checked',true);
+                $("#showSex").val(mydata[0].sex);
+                // console.log(0);
+            }
+            /*console.log(mydata[0].state);
+            console.log($("#showState").val());
+            console.log($("#showSex").val());*/
+            layui.use('form', function(){
+                var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+                form.render();
+            });
+        });
+        $("#close1").click(function(){
+            $(this).parent().css("display","none");
+        });
+        $("#close2").click(function(){
+            $(this).parent().css("display","none");
+        });
+    //  2.2 操作列的 锁定和解锁 功能
+        var t=0;
+        $("table>tbody").on("click",".caozuo .block",function(){
+            if (t%2===0) {
+                $(this).parent().siblings().css("color","red");
+                $(this).siblings().attr("disabled",true);
+                $(this).text("解锁");
+            }
+            else{
+                $(this).parent().siblings().css("color","black");
+                $(this).siblings().attr("disabled",false);
+                $(this).text("锁定");
+            }
+            t++;
+        });
+
+    //  3.1 搜索员工函数
+        function addShow(){
+            $("#sousuo").html("");
+            var a = $("#searchInput").val();
+            var mydata = membersData.filter(item => item.id == a || item.name == a);
+            // console.log(mydata);
+            $("#sousuo").append(`
+                        <tr>
+                            <td>${mydata[0].id}</td>
+                            <td>${mydata[0].name}</td>
+                            <td><img src=${mydata[0].img} alt="图片不存在"></td>
+                            <td>${mydata[0].idCard}</td>
+                            <td>${mydata[0].rifd}</td>
+                            <td>${mydata[0].tel}</td>
+                            <td>${mydata[0].state}</td>
+                            <td>${mydata[0].level}</td>
+                            <td class="caozuo">
+                                <button class="xiugai layui-btn layui-btn-xs layui-btn-normal" data-id="${mydata[0].id}">修改</button>
+                                <button class="chakan layui-btn layui-btn-xs layui-btn-warm" data-id="${mydata[0].id}">查看</button>
+                                <button class="block layui-btn layui-btn-xs layui-btn-danger" data-id="${mydata[0].id}">锁定</button>
+                            </td>
+                        </tr>`);
+            //重新渲染表格
+            layui.use('form', function(){
+                var form = layui.form;
+                form.render();
+            });
+        }
+    //  3.2 搜索员工按钮样式
+        $("#memberSearch").click(function(){
+            if ($("#search").css("opacity") === "0") {
+                $("#search").css({opacity:"1", transition:"0.5s"});
+            }else{
+                $("#search").css({opacity:"0", transition:"0.5s"});
+            }
+        });
+
+    //  4.1 添加员工
+        //4.1.1  获取添加表单页面的输入值
+        //4.1.2  将输入值push到本地数据
+        //4.1.3  重新渲染tbody
+        //4.1.4  重新分页
+
+        $("#addBtn").click(function(){
+            //  拿到新增的数据
+            let data2 = {
+                id:$("#addId").val(),
+                name:$("#addName").val(),
+                rifd:$("#addRifd").val(),
+                idCard:$("#addIdCard").val(),
+                cardPwd:$("#addPwd").val(),
+                joinDate:$("#date2").val(),
+                state:$("#addState").val(),
+                level:$("#addLevel").val(),
+                sex:$("#addSex").val(),
+                tel:$("#addTel").val(),
+                img:"../images/1.jpg"
+            };
+            if (data2.id === "" || data2.cardPwd === "") {
+                layer.open({
+                    type: 1,
+                    content: '<div style="padding: 20px 100px;">'+ '请填写员工工号或卡密' +'</div>' ,
+                    offset: ['350px', '570px'],
+                    closeBtn:1,
+                    btnAlign: 'c',
+                    time:3000,
+                    anim:5
+                });
+            }else if(data2.name === ""){
+                layer.open({
+                    type: 1,
+                    content: '<div style="padding: 20px 100px;">'+ '请填写员工姓名' +'</div>' ,
+                    offset: ['350px', '570px'],
+                    closeBtn:1,
+                    btnAlign: 'c',
+                    time:3000,
+                    anim:5
+                });
+            }else{
+                layer.open({
+                    type: 1,
+                    content: '<div style="padding: 20px 100px;">'+ '新增员工成功' +'</div>' ,
+                    offset: ['350px', '570px'],
+                    closeBtn:1,
+                    btnAlign: 'c',
+                    time:3000,
+                    anim:5
+                });
+                membersData.push(data2);
+                // console.log(membersData);
+                save(membersData);
+            }
+
+            let qishi = (num-1)*5;
+            let jieshu = (num*5)-1;
+            showTbody(qishi,jieshu,membersData);
+            fenye(pageNum);
+            return false;
+        });
+
+    //   5.1 修改员工数据
+        $("#tijiao").click(function(){
+            var obj = {
+                id:$("#editId").val(),
+                name:$("#editName").val(),
+                rifd:$("#editRifd").val(),
+                idCard:$("#editIdCard").val(),
+                cardPwd:$("#editPwd").val(),
+                joinDate:$("#date").val(),
+                tel:$("#editTel").val(),
+                state:$("#editState").val(),
+                level:$("#editLevel").val(),
+                sex:$("#editSex").val(),
+                img:"../images/1.jpg"
+            };
+            for (let i=0;i<membersData.length;i++){
+                if (membersData[i].id === obj.id) {
+                    membersData.splice(i,1,obj);
+                }
+            }
+            $("#editModal").css("display","none");
+            save(membersData);
+            show(membersData);
+            return false;
+        });
+    //   保存本地数据
+        function save(arr) {
+            var str = JSON.stringify(arr);
+            sessionStorage.setItem('membersKey', str);
+            // console.log(membersData)
+            if (parseInt(membersData.length-1)%5 === 0 && parseInt(membersData.length)%5 !== 0) {
+                pageNum++;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/cuxiaohuodong.css">
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <link rel="stylesheet" href="../font/iconfont.css">
+    <script src="../js/demo.js"></script>
+</head>
+<body>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">提示</h4>
+            </div>
+            <div class="modal-body">
+                确定删除吗？
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="del">确定</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!--模态框-->
+    <div class="title row">
+        <div class="col-lg-10 col-md-10">
+            <span class="iconfont icon-shouyintai1"></span>
+            促销活动
+        </div>
+    </div>
+    <div class="row content">
+        <div class="col-lg-10 col-md-10">
+            <div class="btn1">活动类型管理</div>
+            <div class="btn1">活动管理</div>
+        </div>
+    </div>
+    <div class="zhutiAbso">
+        <div class="zhuti">
+            <div class="neirong">
+                <div class="row">
+                    <div class="col-lg-10 col-md-10 heng">
+                        <ul class="clear">
+                            <li class="ulTitle">新增活动类型</li>
+                            <li class="ulTitle">查看活动类型</li>
+                        </ul>
+                        <div class="hengxian"></div>
+                    </div>
+                </div>
+                <div class="row content2" id="xinzeng">
+                    <div class="col-lg-10 col-md-10 bianhuan">
+                        <div class="row">
+                            <div class="col-lg-10 col-md-10">
+                                <label for="mingcheng">
+                                    <span>名称</span>
+                                    <input type="text" placeholder="请输入内容" id="mingcheng" class="inputMargin form-control">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-10 col-md-10">
+                                <label for="miaoshu">
+                                    <span class="wenbenyu">描述</span>
+                                    <textarea id="miaoshu" cols="30" rows="5" placeholder="请输入内容" class="inputMargin form-control"></textarea>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-10 col-md-10">
+                                <span>状态</span>
+                                <label for="kaiqi" class="kaiqi">
+                                    <input type="radio" name="zhuangtai" id="kaiqi" checked>
+                                    <span class="radio-style">开启</span>
+                                </label>
+                                <label for="guanbi" class="guanbi">
+                                    <input type="radio" name="zhuangtai" id="guanbi">
+                                    <span class="radio-style">关闭</span>
+                                </label>
+                                <div class="tianjia">添加</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row content2" id="chakan">
+                    <div class="col-lg-10">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>活动类型名称</th>
+                                <th>描述</th>
+                                <th>活动状态</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!--内容-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="zhutiAbso">
+        <div class="zhuti">
+            <div class="neirong">
+                <div class="row">
+                    <div class="col-lg-10 col-md-10 heng">
+                        <ul class="clear">
+                            <li class="ulTitle1">新增活动</li>
+                            <li class="ulTitle1">查看活动列表</li>
+                            <!--<li class="ulTitle1">生成活动条形码</li>-->
+                        </ul>
+                        <div class="hengxian1"></div>
+                    </div>
+                </div>
+                <div class="row posiAbo">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="row rightT">
+                            <div class="col-lg-12 col-md-12">
+                                <label for="huodongming" class="textRight">
+                                    活动名称
+                                    <input type="text" id="huodongming" placeholder="请输入内容" class="form-control">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row rightT">
+                            <div class="col-lg-12 col-md-12">
+                                <label for="kaiqishijian" class="textRight">
+                                    开启时间
+                                    <input type="date" id="kaiqishijian" placeholder="请输入内容" class="form-control">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row rightT">
+                            <div class="col-lg-12 col-md-12 textRight">
+                                备注
+                                <textarea id="wenbenkuang" cols="30" rows="5" placeholder="请输入内容" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 clear">
+                                <div class="tianjia1 floatRight">添加</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="row rightT">
+                            <div class="col-md-12 col-lg-12">
+                                <label for="leibie" class="textRight">
+                                    类别
+                                    <input type="text" placeholder="请输入内容" id="leibie" class="form-control">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row rightT">
+                            <div class="col-md-12 col-lg-12">
+                                <label for="jieshushijian" class="textRight">
+                                    结束时间
+                                    <input type="date" id="jieshushijian" placeholder="请输入内容" class="form-control">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row textRight danxuan">
+                            <div class="col-md-12 col-lg-12">
+                                状态
+                                <label for="kaiqi1">
+                                    <input type="radio" id="kaiqi1" name="zhuangTai" checked>
+                                    <span class="radio-style">开启</span>
+                                </label>
+                                <label for="guanbi1">
+                                    <input type="radio" id="guanbi1" name="zhuangTai">
+                                    <span class="radio-style">关闭</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row posiAbo tableWidth">
+                    <div class="col-lg-10 col-md-10 textRight">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>活动编号</th>
+                                <th>活动名称</th>
+                                <th>类别</th>
+                                <th>开启时间</th>
+                                <th>结束时间</th>
+                                <th>备注</th>
+                                <th>状态</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!--内容-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--<div class="row mySelect">
+                    <div class="col-lg-10 col-md-10 textRight">
+                        <span>选择活动名称</span>
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            &lt;!&ndash;<option>1</option>&ndash;&gt;
+                            &lt;!&ndash;<option>2</option>&ndash;&gt;
+                            &lt;!&ndash;<option>3</option>&ndash;&gt;
+                            &lt;!&ndash;<option>4</option>&ndash;&gt;
+                            &lt;!&ndash;<option>5</option>&ndash;&gt;
+                        </select>
+                        <div class="selectBtn">生成条形码</div>
+                        <div class="selectBtn">打印条形码</div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+    <script src="../jquery/jquery-3.4.1.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+<!--    <script src="../js/data_system.js"></script>-->
+    <script src="../js/use_data.js"></script>
+    <script>
+        $(".ulTitle").eq(0).on("click",function () {
+            $("#xinzeng").css({
+                top: "0.7rem"
+            });
+            $("#chakan").css({
+                top: "5rem"
+            });
+            $(".hengxian").eq(0).css({
+                left: "0.2rem"
+            });
+            $("#chakan>div>table>tbody").html("")
+        });
+        //活动类型管理 显示第一个
+        $(".ulTitle").eq(1).on("click",function () {
+            huodongleixing();
+            $("#chakan").css({
+                top: "0.7rem"
+            });
+            $("#xinzeng").css({
+                top: "5rem"
+            });
+            $(".hengxian").eq(0).css({
+                left: "1.4rem"
+            })
+        });
+        //活动类型管理 显示第二个
+        $(".ulTitle1").eq(0).click(function () {
+            $(".posiAbo").eq(0).css({top: "0"}).siblings(".posiAbo").css({top: "5rem"});
+            $(".mySelect").css({top:"5rem"});
+            $(".hengxian1").css({
+                width: "0.8rem",
+                left: "0.2rem"
+            });
+            $(".textRight>table>tbody").html("");
+        });
+        //活动管理 显示第一个
+        $(".ulTitle1").eq(1).click(function () {
+            huodongmingcheng();
+            $(".posiAbo").eq(1).css({top: "0"}).siblings(".posiAbo").css({top: "5rem"});
+            $(".mySelect").css({top:"5rem"});
+            $(".hengxian1").css({
+                width: "1.2rem",
+                left: "1.1rem"
+            });
+        });
+        //活动管理 显示第二个
+        $(".btn1").eq(0).click(function () {
+            $(".zhutiAbso").eq(0).css({display:"block"}).siblings(".zhutiAbso").css({display:"none"})
+        });
+        //显示活动类型管理
+        $(".btn1").eq(1).click(function () {
+            $(".zhutiAbso").eq(1).css({display:"block"}).siblings(".zhutiAbso").css({display:"none"})
+        });
+        //显示活动管理
+        window.onload=function(){
+            $(".zhutiAbso").eq(1).css({display: "none"});
+        };
+        //页面载入时渲染内容
+        function huodongleixing() {
+            let arr = searchKey(['dataTable','活动'],'types');
+            arr.forEach(function (item) {
+                $("#chakan>div>table>tbody").append(`
+                     <tr>
+                         <td>${item.id}</td>
+                         <td>${item.type}</td>
+                         <td>${item.describe}</td>
+                         <td><div class="tableBtn">${item.classOne}</div></td>
+                     </tr>
+                 `)
+            });
+            $("td").css({verticalAlign: "middle"})
+        }
+        //渲染活动类型表格
+        function huodongmingcheng() {
+            activityData.forEach(function (item) {
+                $(".textRight>table>tbody").append(`
+                    <tr>
+                        <td>${item.activeNum}</td>
+                        <td>${item.activeName}</td>
+                        <td>${item.type}</td>
+                        <td>${item.startTime}</td>
+                        <td>${item.endTime}</td>
+                        <td>${item.note}</td>
+                        <td>
+                            <div class="tableBtn state">${item.state}</div>
+                            <div class="tableBtn del" type="button" data-toggle="modal" data-target="#myModal">删除</div>
+                        </td>
+                    </tr>
+                `);
+                $("td").css({verticalAlign: "middle"})
+            })
+        }
+        //渲染活动管理表格
+        $(".tianjia").click(function () {
+            let mingcheng = $("#mingcheng").val();
+            let miaoshu = $("#miaoshu").val();
+            let zhuangtai = $(getChooseNode("radio","zhuangtai")).next().text();
+            let arr = searchKey(['dataTable','活动'],'types');
+            let num = arr.length+1;
+            if (panduan()&&mingcheng!==""&&miaoshu!=="") {
+                addKey(['dataTable','活动','id','0'+num,'describe',miaoshu, 'type', mingcheng,'classOne',zhuangtai],'types');
+            }
+        });
+        //添加按钮的点击事件
+        function panduan() {
+            // console.log(searchKey(['dataTable','活动'],'types'));
+            let arr = searchKey(['dataTable','活动'],'types');
+            let mingcheng = $("#mingcheng").val();
+            for (let i = 0;i<arr.length;i++) {
+                if (arr[i].type==mingcheng) {
+                    return false
+                }
+            }
+            return true
+        }
+        //添加按钮的判断
+        $("#chakan>div>table").on("click",".tableBtn",function () {
+            let kaiqi;
+            if ($(this).text()=="开启") {
+                $(this).text("关闭");
+                kaiqi = $(this).parent().prev().prev().prev().text();
+                changeKey(['dataTable', '活动','id',kaiqi],['classOne','关闭'],'types')
+            }else {
+                $(this).text("开启");
+                kaiqi = $(this).parent().prev().prev().prev().text();
+                changeKey(['dataTable', '活动','id',kaiqi],['classOne','开启'],'types')
+            }
+        });
+        //开启关闭的切换的方法
+        $(".tianjia1").click(function () {
+            let huoDongMing = $("#huodongming").val();
+            let kaiqishi = $("#kaiqishijian").val();
+            let beizhu = $("#wenbenkuang").val();
+            let leibie = $("#leibie").val();
+            let jieshushi = $("#jieshushijian").val();
+            let zhuangtai = $(getChooseNode("radio","zhuangtai")).next().text();
+            let num = activityData.length+1;
+            if (panduan1()&&kaiqishi!==""&&huoDongMing!==""&&beizhu!==""&&leibie!==""&&jieshushi!==""&&zhuangtai!=="") {
+                addKey(['activeNum','0'+num,'activeName',huoDongMing,'type',leibie, 'startTime', kaiqishi,'endTime',jieshushi,"note",beizhu,"state",zhuangtai],'activity');
+            }
+        });
+        //添加活动的点击事件
+        function panduan1()  {
+            let huoDongMing = $("#huodongming").val();
+            for (let i=0;i<activityData.length;i++) {
+                if (activityData[i].activeName==huoDongMing) {
+                    return false
+                }
+            }
+            return true
+        }
+        //上面点击事件的判断
+        $(".tableWidth>div>table>tbody").on("click",".state",function () {
+            let  kaiqi;
+            if ($(this).text()=="开启") {
+                $(this).text("关闭");
+                kaiqi = $(this).parent().parent().children()[0].innerText;
+                changeKey(['activeNum',kaiqi],['state','关闭'],'activity')
+            }else {
+                $(this).text("开启");
+                kaiqi = $(this).parent().parent().children()[0].innerText;
+                changeKey(['activeNum',kaiqi],['state','开启'],'activity')
+            }
+        }).on("click",".del",function () {
+            let idNum = $(this).parent().parent().children().eq(0).text();
+            let idNode=$(this).parent().parent();
+            $("#del").click(function () {
+                idNode.remove();
+                deleteKey(["activeNum",idNum],"activity")
+            })
+        });
+        //开启关闭的切换和删除
+
+        // changeKey(['dataTable', '活动','id','01'],['classOne','关闭'],'types')
+    </script>
+</body>
+</html>

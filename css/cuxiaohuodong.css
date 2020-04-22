@@ -1,0 +1,242 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-size: 100px;
+}
+body{
+    font-size: 14px;
+    position: relative;
+}
+.row{
+    margin-left: 0;
+    margin-right: 0;
+}
+.ulTitle{
+    list-style: none;
+    float: left;
+    margin: 10px 0;
+    padding: 20px 20px 0;
+    cursor: pointer;
+}
+.title{
+    padding: 20px 0;
+    border-bottom: 2px solid #D7D7D7;
+}
+.content{
+    margin: 20px 0;
+    padding: 20px 0;
+    border-radius: 10px;
+    background-color: #F6F6F6;
+}
+.btn1{
+    width: 120px;
+    height: 40px;
+    background-color: #409EFF;
+    line-height: 40px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    margin-left: 40px;
+    color: white;
+    cursor: pointer;
+}
+.neirong{
+    position: relative;
+    height: 5rem;
+    background-color: #F6F6F6;
+    overflow: hidden;
+}
+.content2{
+    border-radius: 10px;
+    position: absolute;
+    width: 100%;
+    transition: .3s all linear;
+}
+.clear:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.heng{
+    position: relative;
+    border-bottom: 1px solid #E4E7ED;
+}
+.hengxian{
+    height: 2px;
+    width: 1.2rem;
+    background-color: #3399FF;
+    position: absolute;
+    left: 0.2rem;
+    transition: .3s all linear;
+}
+.bianhuan{
+    margin: 20px 0 0 40px;
+}
+/*表单*/
+label{
+    font-weight: normal;
+}
+#miaoshu{
+    width: 3rem;
+    height: 1rem;
+}
+#wenbenkuang{
+    width: 3rem;
+    height: 1rem;
+}
+textarea{
+    vertical-align: text-top;
+}
+#mingcheng{
+    width: 3rem;
+    height: 0.4rem;
+}
+.inputMargin,.kaiqi{
+    margin: 0 0 20px 10px;
+}
+.guanbi{
+    margin-left: 0.5rem;
+}
+/*单选默认样式*/
+input[type="radio"]{
+    display: none;
+}
+.radio-style:before{
+    content: "";
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid #409EFF;
+    box-sizing: border-box;
+}
+input[type="radio"]:checked + .radio-style:before{
+    padding: 2px;
+    background-clip: content-box;
+    background-color: #409EFF;
+}
+/*按钮*/
+.tianjia{
+    width: 2rem;
+    height: 0.4rem;
+    line-height: 0.4rem;
+    text-align: center;
+    background-color: #409EFF;
+    margin-left: 0.4rem;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin-top: 0.2rem;
+}
+.tableBtn{
+    width: 50px;
+    padding: 5px 0;
+    background-color: #409EFF;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+}
+#xinzeng{
+    top: 0.7rem;
+}
+#chakan{
+    margin: 20px 0 0;
+    top: 5rem;
+}
+/*活动管理*/
+.ulTitle1{
+    list-style: none;
+    float: left;
+    margin: 10px 0;
+    padding: 20px 20px 0;
+    cursor: pointer;
+}
+.hengxian1{
+    height: 2px;
+    width: 0.8rem;
+    background-color: #3399FF;
+    position: absolute;
+    left: 0.2rem;
+    transition: .3s all linear;
+}
+#huodongming,#kaiqishijian,#leibie,#jieshushijian{
+    width: 3rem;
+    height: 0.4rem;
+}
+.textRight{
+    margin-top: 40px;
+}
+.textRight>input{
+    vertical-align: middle;
+    margin-left: 20px;
+}
+.rightT{
+    text-align: right;
+}
+.danxuan{
+    margin-left: 1.1rem;
+}
+#wenbenkuang{
+    margin-left: 20px;
+}
+.floatRight{
+    float: right;
+}
+.tianjia1{
+    width: 3rem;
+    height: 0.4rem;
+    line-height: 0.4rem;
+    text-align: center;
+    background-color: #409EFF;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+input[type="text"]{
+    display: inline-block;
+}
+.posiAbo{
+    margin-top: 0.5rem;
+    position: absolute;
+    top: 0;
+    transition: .3s all linear;
+}
+/*.mySelect{
+    width: 100%;
+    position: absolute;
+    top: 5rem;
+    margin-top: 0.5rem;
+    transition: .3s all linear;
+}*/
+.form-control{
+    width: 2rem;
+    display: inline-block;
+}
+.zhuti {
+    position: relative;
+}
+.tableWidth{
+    width: 100%;
+    top: 5rem;
+}
+.zhutiAbso{
+    position: absolute;
+    width: 100%;
+}
+/*
+.selectBtn{
+    width: 1rem;
+    height: 0.4rem;
+    text-align: center;
+    line-height: 0.4rem;
+    display: inline-block;
+    background-color: #409EFF;
+    border-radius: 8px;
+    margin-left: 0.4rem;
+    color: white;
+    cursor: pointer;
+}*/
